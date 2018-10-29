@@ -1,3 +1,4 @@
+<%@page import="Modelo.Reservacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,11 +7,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <title>Página de Inicio</title>
+        <link rel="stylesheet" href="main.css">
+                
+        <title>Creando Empleado</title>
     </head>
     <!-- Inicio del navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="index.jsp">Hotel</a>
+          <a class="navbar-brand" href="index.jsp">Reservaciones</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -87,12 +90,121 @@
           </div>
         </nav>
     <body>
-    <!-- Inicio del index -->
+    <!-- Inicio de crear Empleado -->
+        <form method="POST" action="ReservacionesServlet">
+          <h2 class="text-primary"> Nueva Reservacion </h2>  
+          <div class="form-group">
+            <label for="Telefono">Fecha Ingreso</label>
+            <input type="date" class="form-control" id="fecha_ingreso" name="fecha_ingreso" placeholder="Ej: 21102018" required>
+          </div>
+          <div class="form-group">
+            <label for="Telefono">Fecha Salida</label>
+            <input type="date" class="form-control" id="fecha_salida" name="fecha_salida" placeholder="Ej: 23102018" required>
+          </div>
+          <div class="form-group">
+            <label for="habitacion">Habitacion</label><br>
+                <select id="comboHotelPerteneciente" name="habitacionHotelPerteneciente">
+                </select>
+          </div>
+          <div class="form-group">
+            <label for="nitcliente">Nit Cliente</label><br>
+                <select id="nit" name="nitcliente">
+                </select>
+          </div>
+          <div class="form-group">
+            <label for="tarifa">Tarifa</label><br>
+                <select id="tarifa" name="tarifaperteneciente">
+                </select>
+          </div>
+
+          <div class="form-group">
+              <!-- Boton para enviar los datos a la base de datos -->
+              <button class="btn btn-info">Registrar Reservacion </button>
+          </div>
+        </form>
+        <script language='javascript'>
+            var agregarOpciones = "";
+            var valor = "";
+            var texto = "";
+            <%
+                String idHotel[][];
+                Reservacion rn = new Reservacion();
+                idHotel = rn.consultar_IDhotel();
+                //String prueba = idHotel[0][1].toString();
+                //System.out.println(prueba);
+                for (int i = 0; i < idHotel.length; i++) {
+
+            %>
+            valor = "<%=idHotel[i][0].toString()%>";
+            texto = "<%=idHotel[i][1].toString()%>";
+            agregarOpciones += "<option value='" + valor + "'>" + texto + "</option>";
+
+
+
+            <%
+
+                }
+
+            %>
+            //console.log(agregarOpciones);
+            document.getElementById("comboHotelPerteneciente").innerHTML = agregarOpciones;
+
+            var agregarOpciones = "";
+            var valor = "";
+            var texto = "";
+            <%
+                String idTarifa[][];
+                Reservacion cd = new Reservacion();
+                idHotel = cd.consultar_nit();
+                //String prueba = idHotel[0][1].toString();
+                //System.out.println(prueba);
+                for (int i = 0; i < idHotel.length; i++) {
+
+            %>
+            valor = "<%=idHotel[i][0].toString()%>";
+            texto = "<%=idHotel[i][1].toString()%>";
+            agregarOpciones += "<option value='" + valor + "'>" + texto + "</option>";
+
+
+
+            <%
+
+                }
+
+            %>
+            //console.log(agregarOpciones);
+            document.getElementById("nit").innerHTML = agregarOpciones;
+
+            var agregarOpciones = "";
+            var valor = "";
+            var texto = "";
+            <%
+                String idNit[][];
+                Reservacion xd = new Reservacion();
+                idHotel = xd.consultar_IDtarifa();
+                //String prueba = idHotel[0][1].toString();
+                //System.out.println(prueba);
+                for (int i = 0; i < idHotel.length; i++) {
+
+            %>
+            valor = "<%=idHotel[i][0].toString()%>";
+            texto = "<%=idHotel[i][1].toString()%>";
+            agregarOpciones += "<option value='" + valor + "'>" + texto + "</option>";
+
+
+
+            <%
+
+                }
+
+            %>
+            //console.log(agregarOpciones);
+            document.getElementById("tarifa").innerHTML = agregarOpciones; 
+        </script>
+        
     
     
-    
-    
-    <!-- Final del index -->
+    <!-- Final de crear Empleado -->
     </body>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -1,4 +1,4 @@
-<%@page import="Modelo.Habitacion"%>
+<%@page import="Modelo.Tarifa"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,11 +7,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <title>Crear Habitaciones</title>
+        <title>Crear Tarifa</title>
     </head>
     <!-- Inicio del navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.jsp">Habitaciones</a>
+        <a class="navbar-brand" href="index.jsp">Tarifas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -94,52 +94,27 @@
 
         <center>
             <div>
-                <h1>Crear Habitaciones</h1>
+                <h1>Crear Tarifas</h1>
             </div>
         </center>
         <br>
         <center>
             <div style="width: 80%; border: solid 1px #000000; ">
-                <form style="margin: 2%" method="POST" action="HabitacionServlet">
+                <form style="margin: 2%" method="POST" action="TarifaServlet">
 
-                    <div>
-                        <label style="font-weight: 700">Tipo habitación</label>
-                        <br>
-                        <select name="tipoHabitacion">
-                            <option value="Matrimonial">Matrimonial</option>
-                            <option value="Individual">Individual</option>
-                            <option value="Familiar">Familiar</option>
-                        </select>
-                    </div>
-                    <br>
+                    
                     <div>
                         <label style="font-weight: 700">Descripción</label>
                         <br>
-                        <textarea style="width: 70%; height: 150px;" name="descripcionHabitacion"></textarea>
+                        <textarea style="width: 70%; height: 150px;" name="descripcionTarifa"></textarea>
                     </div>
                     <br>
                     <div>
-                        <label style="font-weight: 700">Capacidad</label>
+                        <label style="font-weight: 700">Valor</label>
                         <br>
-                        <input type="number" style="width: 50px;" name="capacidadHabitacion"/>
+                        <input type="text" style="width: 50px;" name="valorTarifa"/>
                     </div>
-                    <br>
-                    <div>
-                        <label style="font-weight: 700">Estado</label>
-                        <br>
-                        <select name="estadoHabitacion">
-                            <option>Libre</option>
-                            <option>Reservado</option>
-                            <option>Ocupado</option>
-                        </select>
-                    </div>
-                    <br>
-                    <div>
-                        <label style="font-weight: 700">Hotel Perteneciente</label>
-                        <br>
-                        <select id="comboHotelPerteneciente" name="habitacionHotelPerteneciente">
-                        </select>
-                    </div>
+                   
                     <br>
                     <div>
                         <button>Registrar</button>
@@ -147,33 +122,7 @@
                 </form>
             </div>
         </center>
-        <script language='javascript'>
-            var agregarOpciones = "";
-            var valor = "";
-            var texto = "";
-            <%
-                String idHotel[][];
-                Habitacion hb = new Habitacion();
-                idHotel = hb.consultar_IDhotel();
-                //String prueba = idHotel[0][1].toString();
-                //System.out.println(prueba);
-                for (int i = 0; i < idHotel.length; i++) {
-
-            %>
-            valor = "<%=idHotel[i][0].toString()%>";
-            texto = "<%=idHotel[i][1].toString()%>";
-            agregarOpciones += "<option value='" + valor + "'>" + texto + "</option>";
-
-
-
-            <%
-
-                }
-
-            %>
-            //console.log(agregarOpciones);
-            document.getElementById("comboHotelPerteneciente").innerHTML = agregarOpciones;
-        </script>
+        
 
         <!-- Final del index -->
     </body>

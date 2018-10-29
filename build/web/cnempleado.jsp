@@ -1,3 +1,4 @@
+<%@page import="Modelo.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,11 +7,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <title>Página de Inicio</title>
+        <link rel="stylesheet" href="main.css">
+                
+        <title>Creando Empleado</title>
     </head>
     <!-- Inicio del navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="index.jsp">Hotel</a>
+          <a class="navbar-brand" href="index.jsp">Empleado</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -87,12 +90,65 @@
           </div>
         </nav>
     <body>
-    <!-- Inicio del index -->
+    <!-- Inicio de crear Empleado -->
+        <form method="POST" action="EmpleadoServlet">
+          <h2 class="text-primary"> Nuevo Empleado</h2>  
+          <div class="form-group">
+            <label for="Nombre">Nombre Empleado</label>
+            <input type="text" class="form-control" id="nitCliente" name="nombre_empleado" placeholder="Ej: Omar" required>
+          </div>
+          <div class="form-group">
+            <label for="Estado">Estado</label><br>
+            <select name="estado">
+                <option value="Activo">Activo</option>
+                <option value="Desactivado">Desactivado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="CampoDireccion">Dirección del Empleado </label>
+            <input type="text" class="form-control" id="direccionCliente" name="direccion_empleado" placeholder="Ej: 6ta calle a 5301 Guatemala" required>
+          </div>
+          <div class="form-group">
+            <label for="Hotel">Hotel</label><br>
+                <select id="comboHotelPerteneciente" name="habitacionHotelPerteneciente">
+                </select>
+          </div>
+          <div class="form-group">
+              <!-- Boton para enviar los datos a la base de datos -->
+              <button class="btn btn-info">Registrar Empleado </button>
+          </div>
+        </form>
+        <script language='javascript'>
+            var agregarOpciones = "";
+            var valor = "";
+            var texto = "";
+            <%
+                String idHotel[][];
+                Empleado hb = new Empleado();
+                idHotel = hb.consultar_IDhotel();
+                //String prueba = idHotel[0][1].toString();
+                //System.out.println(prueba);
+                for (int i = 0; i < idHotel.length; i++) {
+
+            %>
+            valor = "<%=idHotel[i][0].toString()%>";
+            texto = "<%=idHotel[i][1].toString()%>";
+            agregarOpciones += "<option value='" + valor + "'>" + texto + "</option>";
+
+
+
+            <%
+
+                }
+
+            %>
+            //console.log(agregarOpciones);
+            document.getElementById("comboHotelPerteneciente").innerHTML = agregarOpciones;
+        </script>
     
     
     
-    
-    <!-- Final del index -->
+    <!-- Final de crear Empleado -->
     </body>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -26,7 +26,6 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="cnhabitacion.jsp">Crear Nueva Habitación</a>
-                <a class="dropdown-item" href="achabitacion.jsp">Actualizar Habitación</a>
                 <a class="dropdown-item" href="cshabitacion.jsp">Consultar Habitaciones</a>
               </div>
             </li>
@@ -36,7 +35,6 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="cnempleado.jsp">Crear Nuevo Empleado</a>
-                <a class="dropdown-item" href="acempleado.jsp">Actualizar Empleado</a>
                 <a class="dropdown-item" href="csempleado.jsp">Consultar Empleados Activos</a>
               </div>
             </li>
@@ -46,7 +44,6 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="cntarifa.jsp">Crear Nueva Tarifa</a>
-                <a class="dropdown-item" href="actarifa.jsp">Actualizar Tarifa</a>
                 <a class="dropdown-item" href="cstarifa.jsp">Consultar Tarifas</a>
               </div>
             </li>
@@ -56,7 +53,6 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="cncargo.jsp">Crear Nuevo Cargo Extra</a>
-                <a class="dropdown-item" href="accargo.jsp">Actualizar Cargo Extra</a>
                 <a class="dropdown-item" href="cscargo.jsp">Consultar Cargos Extras</a>
               </div>
             </li>
@@ -85,7 +81,6 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="cnreservacion.jsp">Crear Nueva Reservacion</a>
-                <a class="dropdown-item" href="acreservacion.jsp">Actualizar Reservacion</a>
                 <a class="dropdown-item" href="csreservacion.jsp">Consultar Reservaciones</a>
               </div>
             </li>      

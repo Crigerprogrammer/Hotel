@@ -1,3 +1,4 @@
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,11 +7,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <title>Página de Inicio</title>
+        <title>Cargos Extras</title>
     </head>
     <!-- Inicio del navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="index.jsp">Hotel</a>
+          <a class="navbar-brand" href="index.jsp">Cargos Extras</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -87,12 +88,63 @@
           </div>
         </nav>
     <body>
-    <!-- Inicio del index -->
+    <!-- Inicio de crear Empleado -->
+        <h1 align="center">Mantenimiento Cargos Extras</h1>
+        
+        <table border ="1" width="600" align="center" class="table table-hover table-dark">
+          <thead>
+            <tr >
+            <center><th colspan ="5">Mantenimiento de Cargos Extras</th></center>
+            </tr>
+          </thead>    
+            <tr>
+                <th>Id</th><th>Descripcion</th>
+                <th>Valor</th>           
+            </tr>
+            <%
+            Connection cnx=null;       
+            Statement sta=null;
+            ResultSet rs=null;
+            try{
+            Class.forName("com.mysql.jdbc.Driver");
+            cnx=DriverManager.getConnection
+            ("jdbc:mysql://localhost/hotel?user=root&password=");
+            
+            sta=cnx.createStatement();
+            rs=sta.executeQuery("SELECT * FROM cargosextras");
+            
+            while(rs.next()){
+            %>
+            <tr>
+                <th><%=rs.getString(1)%> </th>
+                <th><%=rs.getString(2)%> </th>
+                <th><%=rs.getString(3)%> </th>
+               
+                <th>
+                    <a href="accargo.jsp?id=<%=rs.getString(1)%>">
+                    <img src="iconos/edit.jpg" width="30" height="30">
+                    </a>
+                   
+                </th>
+            </tr>            
+            <%       
+            }
+
+            sta.close();
+            rs.close();
+            cnx.close();
+            
+            }catch (Exception e){}
+            
+
+
+                %>
+            
+        </table>        
     
     
     
-    
-    <!-- Final del index -->
+    <!-- Final de crear Empleado -->
     </body>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
