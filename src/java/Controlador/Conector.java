@@ -24,7 +24,7 @@ public class Conector {
     private String usuario = "root";
     private String IP = "localhost";
     private String password = "";
-    private String BaseDatos = "";
+    private String BaseDatos = "hotel";
 
     protected void conectar() {
         try {
